@@ -1,0 +1,119 @@
+% Type of document class
+\documentclass[12pt, a4paper]{article}
+
+% PACKAGES
+\usepackage{paracol}                % Package for Columns
+\usepackage{blindtext}              % Generates text
+\usepackage[utf8]{inputenc}         % Document encode
+\usepackage[a4paper]{geometry}      % Customize page layout
+\usepackage{fancyhdr}               % Document styles
+\usepackage{transparent}            % Document color stack
+\usepackage{color}
+\usepackage{fontawesome}            % Icons
+
+%
+
+
+% COLOR DEFINITIONS
+\definecolor{blue}{RGB}{ 45, 50, 90 }
+
+% COLORS FOR HEADER
+\definecolor{bg_c_header}{RGB}{ 67, 102, 150 } % Background header color
+\definecolor{bg_l_c_header}{RGB}{255, 255, 255} % Color header letter
+\definecolor{sub_l_c_header}{RGB}{255, 255, 255} % Color subheader letter
+
+% COLORS FOR MAIN COLUMNS
+\definecolor{column_a}{RGB}{45, 129, 163} % Background main color
+\definecolor{column_b}{RGB}{154, 215, 240} % Background main color
+%\definecolor{column_left}{RGB}{217, 224, 234} % Background main color
+%\definecolor{column_right}{RGB}{255, 255, 255} % Background main color
+
+
+% COMMANDS
+\newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
+
+% COMMAND for title sections
+% 1. Parameter: Text
+% 2. Parameter: Color
+\newcommand{\cvsection}[2]{
+    % Margins
+    \vspace{1cm}
+    \hspace{1cm}
+    \parbox[c][15pt]{1\linewidth}{ %Podría remplazarse por un minipage que puede contener mas cosas
+        \textcolor{#2}{\textbf{\large{\uppercase{#1}}}}
+        }
+    \vspace{1cm}
+    \hspace{1cm}
+    \textcolor{#2}{ \rule{0.1\textwidth}{2pt} }
+        
+    
+}
+
+% COMMAND For Header
+% 1. Paramerter: Title
+% 2. Parameter: Subtitle
+\newcommand*{\cvheader}[2]{
+    \vspace{1cm}
+    \hspace{1cm}
+        \begin{center}
+            \fcolorbox{bg_c_header}{bg_c_header}{
+        \parbox[c][0.1\textwidth]{0.70\columnwidth}{
+            \begin{center}
+                \LARGE{\textcolor{bg_l_c_header}{\textbf{\uppercase{#1}}}}
+                \break
+                \small{\textcolor{sub_l_c_header}{\uppercase{#2}}}
+            \end{center}
+        }
+    }
+        \end{center}
+    
+}
+
+% **********************************
+% LAYAOUT
+% **********************************
+
+\geometry{top=0cm, bottom=0cm, left=0cm, right=0cm}
+\pagestyle{empty}
+\setlength{\parindent}{0mm}
+
+% Columns
+
+\columnratio{0.30} % Column distribution [30% - 70%] example
+\setlength{\columnsep}{0pt} % Ajusta el espacio entre las columnas
+\backgroundcolor{c[0]}{column_a} % pink for colunmn-0
+\backgroundcolor{c[1]}{column_b} % cream yellow for column-1
+
+
+
+
+
+
+\begin{document}
+
+\begin{paracol}{2}
+    \begin{leftcolumn}
+
+        \begin{minipage}[t][0.99\textheight][t]{\linewidth}
+
+            %Content
+            \cvsection{Perfil}{blue}
+            \cvheader{a}{b}
+        \end{minipage}
+
+    \end{leftcolumn}
+    \begin{rightcolumn}
+        \begin{minipage}[t][0.99\textheight][t]{\linewidth}
+            %Content
+            \cvsection{Perfil}{blue}
+            \cvsection{Perfil}{blue}
+            \cvsection{Perfil}{blue}
+            \cvsection{Perfil}{blue}
+            \cvheader{a}{b}
+        \end{minipage}
+    \end{rightcolumn}
+\end{paracol}
+
+\end{document}
+
+% Overfull \hbox (28.46664pt too wide) => Tamaño de margen excedido según el tipo de document class
