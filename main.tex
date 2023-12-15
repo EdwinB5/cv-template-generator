@@ -1,0 +1,135 @@
+% DOCUMENT CV
+\documentclass[10pt, a4paper]{article}
+
+% PACKAGES
+\usepackage{paracol}                % Package for Columns
+\usepackage{blindtext}              % Generates text
+\usepackage[utf8]{inputenc}         % Document encode
+\usepackage[a4paper]{geometry}      % Customize page layout
+\usepackage{fancyhdr}               % Document styles
+\usepackage{transparent}            % Document color stack
+\usepackage{color}
+\usepackage{fontawesome}            % Icons
+
+% COLOR DEFINITIONS
+\definecolor{blue}{RGB}{ 45, 50, 90 }
+
+% COLORS FOR HEADER
+\definecolor{bg_c_header}{RGB}{ 67, 102, 150 } % Background header color
+\definecolor{bg_l_c_header}{RGB}{255, 255, 255} % Color header letter
+\definecolor{sub_l_c_header}{RGB}{255, 255, 255} % Color subheader letter
+
+% COLORS FOR MAIN COLUMNS
+\definecolor{column_left}{RGB}{255, 0, 0} % Background main color
+%\definecolor{column_left}{RGB}{217, 224, 234} % Background main color
+%\definecolor{column_right}{RGB}{255, 255, 255} % Background main color
+\definecolor{column_right}{RGB}{0, 255, 0} % Background main color
+
+% COMMANDS
+
+% COMMAND for title sections
+% 1. Parameter: Text
+\newcommand{\cvsection}[2]{
+    \vfill\null
+    \parbox[c][15pt]{1\linewidth}{\textcolor{#2}{\textbf{\large{\uppercase{#1}}}}}\\[-4pt]
+    \textcolor{#2}{ \rule{0.1\textwidth}{2pt} } \\
+}
+
+
+% COMMAND For Header
+% 1. Paramerter: Title
+% 2. Parameter: Subtitle
+\newcommand*{\cvheader}[2]{
+    \fcolorbox{bg_c_header}{bg_c_header}{
+        \parbox[c][0.07\textwidth]{\linewidth}{
+            \begin{center}
+                \LARGE{\textcolor{bg_l_c_header}{\textbf{\uppercase{#1}}}}
+                \break
+                \small{\textcolor{sub_l_c_header}{\uppercase{#2}}}
+            \end{center}
+        }
+    }
+}
+
+
+
+
+
+%\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+%	\begin {center}
+%		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ YOUR NAME } } } } \\[-24pt]
+%		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
+%		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
+%	\end {center}
+%\end{minipage}} \\[14pt]
+%\vspace{-12pt}
+
+
+
+
+% LAYOUT
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+\pagestyle{empty}
+\setlength{\parindent}{0mm}
+
+
+\backgroundcolor{c[0](4pt, 4pt)}{column_left}
+\backgroundcolor{C[2](4pt, 4pt)}{column_right}
+
+% DOCUMENT
+\begin{document}
+
+\columnratio{0.30} % Column distribution [30% - 70%] example
+
+
+\begin{paracol}{2}
+    \begin{leftcolumn}
+        
+        % 
+        % Image example
+        %
+        IMAGEN
+        % Zona de contacto
+        %
+        \vspace{5pt}
+
+        \cvsection{Contacto}{blue}
+
+        \vspace{5pt}
+
+        %
+        % Habilidades
+        %
+        \cvsection{Habilidades}{blue}
+
+    \end{leftcolumn}
+
+    \begin{rightcolumn}
+        %
+        % Header
+        %
+        \cvheader{TITULO}{SUBTITULO}
+
+        \cvsection{Perfil}{blue}
+
+        \cvsection{Experiencia de trabajo}{column_left}
+
+        \cvsection{Educación}{blue}
+
+        \cvsection{Certificaciones}{blue}
+
+    \end{rightcolumn}
+
+\end{paracol}
+
+\newpage
+
+
+%
+% Referencias
+%
+\cvsection{Referencias}{blue}
+
+
+
+\end{document}
