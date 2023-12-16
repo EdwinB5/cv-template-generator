@@ -29,6 +29,7 @@
 
 % COMMAND for title sections
 % 1. Parameter: Text
+% 2. Parameter: Color
 \newcommand{\cvsection}[2]{
     \vfill\null
     \parbox[c][15pt]{1\linewidth}{\textcolor{#2}{\textbf{\large{\uppercase{#1}}}}}\\[-4pt]
@@ -52,33 +53,17 @@
 }
 
 
-
-
-
-%\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
-%	\begin {center}
-%		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ YOUR NAME } } } } \\[-24pt]
-%		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-%		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
-%	\end {center}
-%\end{minipage}} \\[14pt]
-%\vspace{-12pt}
-
-
-
-
 % LAYOUT
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
-\pagestyle{empty}
+\geometry{top=0cm, bottom=0cm, left=1cm, right=1cm}
+\pagestyle{empty} % No page numbers
 \setlength{\parindent}{0mm}
 
 
 \backgroundcolor{c[0](4pt, 4pt)}{column_left}
-\backgroundcolor{C[2](4pt, 4pt)}{column_right}
+\backgroundcolor{C[1](4pt, 4pt)}{column_right}
 
 % DOCUMENT
 \begin{document}
-
 \columnratio{0.30} % Column distribution [30% - 70%] example
 
 
@@ -122,14 +107,11 @@
 
 \end{paracol}
 
-\newpage
 
 
 %
 % Referencias
 %
 \cvsection{Referencias}{blue}
-
-
 
 \end{document}

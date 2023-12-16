@@ -1,0 +1,5 @@
+nombre,Nilson
+apellido,Vargas
+email,nilson.vargas@example.com
+gitid,NilsonSpaghettiCode
+giturl,https://github.com/nilsonSpaghettiCode/
