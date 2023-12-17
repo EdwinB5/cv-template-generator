@@ -1,0 +1,6 @@
+\cvevent
+	{\textbf{@TIME}}
+	{@PROJECT_NAME}
+	{Tool: @TOOLS}
+	{@DESCRIPTION}
+\vfill\null

@@ -390,31 +390,26 @@
 
 \iconemail{EnvelopeSquare}{14}{\var{email}}{\var{email}}{black}\\[6pt]
 
-\newcommand{\gitURL}{
-	\var{giturl}
-}
-
-\CatchFileDef{\urlGIT}{datx.dat}{}
-
 
 \CatchFileDef{\datacv}{data.cfg}{}
 
-\setsepchar{ }
-\readlist\mylist{\datacv}
+% \setsepchar{, }
+% \readlist\mylist{\datacv}
 
-\StrCut{\mylist[1]}{=}\Key\Value
-\Key
-\break
-\Value
-.
+% \StrCut{\mylist[1]}{=}\Key\Value
+% \Key
+% \break
+% \Value
+
+\CatchFileDef{\datacv}{data.cfg}{}
+%
+% Command to convert a string to a list c:
+% 1. Parameter: Separator
+% 2. Parameter: String
+% 3. Parameter: List name
+
 %\icontext{Github}{14}{\href{\var{giturl}}{\var{gitid}}}{black}\\[6pt]
 
-
-\icontext{Github}{14}{\href{\urlGIT}{\var{gitid}}}{black}\\[6pt]
-
-\icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/yourid/}{yourid}}{black}\\[6pt]
-
-\icontext{Phone}{14}{+91 XXXXX XXXXX}{black}\\[6pt]
 \vfill\null
 %\cvqrcode{0.7}
 
