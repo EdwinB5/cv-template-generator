@@ -12,6 +12,8 @@
 *.cb2
 .*.lb
 
+data/cvdata.json
+
 ## Intermediate documents:
 *.dvi
 *.xdv

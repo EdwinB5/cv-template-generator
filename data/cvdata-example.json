@@ -1,0 +1,48 @@
+{
+    "personal_info": {
+        "name": "",
+        "perfil": "",
+        "contact": {
+            "github_url": "",
+            "github_id": "",
+            "email": "",
+            "linkedin": ""
+        }
+    },
+
+    "skills": [
+        {
+            "type": "hard/soft",
+            "name": "",
+            "value": 5
+        }
+    ],
+    
+    "work_experience": [
+        {
+            "position_name": "",
+            "entity": "",
+            "time": 0,
+            "description": ""
+        }
+    ],
+
+    "education": [
+        {
+            "type": "formal/certificate",
+            "name": "",
+            "time": "",
+            "description": "",
+            "institution": ""
+        }
+    ],
+
+    "references": [
+        {
+            "name": "",
+            "relation": "",
+            "position": "",
+            "contact_number": ""
+        }
+    ]
+}

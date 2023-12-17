@@ -1,0 +1,17 @@
+Secciones de la CV
+•	Perfil
+•	Contacto
+•	Habilidades
+        o	Tecnológicas
+        o	Idioma
+        o	Blandas
+•	Educación
+•	Educación complementaria
+•	Experiencia de trabajo
+•	Referencias
+
+============================================
+
+data/cvdata-example.json
+
+Rename to cvdata.json if u put content on it
