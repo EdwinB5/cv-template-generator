@@ -1,0 +1,29 @@
+Config loaded...
+App init...
+Running App...
+Components loaded: {'cv_contact': './src/components/cv_contact', 'work_experience': './src/components/work_experience'}
+Data loaded...
+Template loaded...
+Compilator proccess init...
+{'cv_contact': './src/components/cv_contact', 'work_experience': './src/components/work_experience'}
+dict
+Component not found
+Component found: ./src/components/work_experience
+\cvevent
+	{\textbf{0}}
+	{Ingeniero de Sistemas}
+	{Institute/Organization: Universidad Minuto de Dios}
+	{}
+\vfill\null
+
+\cvevent
+	{\textbf{0}}
+	{Bachiller Técnico en Mecatrónica}
+	{Institute/Organization: Intituto Técnico Industrial Francisco Jose De Caldas}
+	{}
+\vfill\null
+
+
+Component not found
+Component not found
+Compilator proccess finished...

@@ -1,0 +1,19 @@
+{
+    "log_config":{
+        "dir_log": "/log/",
+        "regular_log": "log.txt",
+        "error_log": "error.txt"
+    },
+    "input":{
+        "components_path": "./src/components/",
+        "template_path":"./template/",
+        "data_path": "./data/",
+        "name_file_data": "cvdata.json",
+        "name_file_template": "template.tex"
+    },
+    "output":
+    {
+        "dir": "./out/",
+        "name_file": "out.tex"
+    }
+}

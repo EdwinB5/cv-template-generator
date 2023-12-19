@@ -1,0 +1,6 @@
+\cvevent
+	{\textbf{@time}}
+	{@position_name}
+	{Institute/Organization: @entity}
+	{@description}
+\vfill\null
