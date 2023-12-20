@@ -1,6 +1,6 @@
 \cvevent
 	{\textbf{@time}}
-	{@position_name}
-	{@entity}
+	{@name_conference}
+	{@by}
 	{@description}
 \vfill\null

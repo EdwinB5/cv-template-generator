@@ -92,7 +92,7 @@ class Compilator():
         # Example: VALUE: @DESCRIPTION - COMPONENT TEMPLATE: @DESCRIPTION@
         format_str = ''
         for data in list_data:
-            format_str += cls.replace_str(component, data) + '\n'
+            format_str += cls.replace_str(component, data) + '\n\n'
          
         return format_str
     

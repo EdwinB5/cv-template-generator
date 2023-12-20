@@ -1,7 +1,8 @@
 {
     "personal_info": {
         "name": "",
-        "perfil": ""
+        "perfil": "",
+        "rol": ""
     },
     "contact": {
         "github_url": "",

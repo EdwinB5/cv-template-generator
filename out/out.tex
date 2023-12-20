@@ -291,6 +291,30 @@
 }
 
 %----------------------------------------------------------------------------------------
+%	 CV REFERENCE
+%----------------------------------------------------------------------------------------
+
+% param 1: Name
+% param 2: Position/Charge job
+% param 3: Phone number
+% param 4: Email
+\newcommand{\cvreference}[5] {
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\textbf{#1}} & \\
+			\textcolor{maincol}{\textbf{#4:} #2} & \\
+			\textcolor{maincol}{\textbf{#5:} #3} & \\
+		\end{tabular*}\\[4pt]
+	}
+
+	\vspace{4pt}
+}
+
+
+
+%----------------------------------------------------------------------------------------
 %	 CV META EVENT
 %----------------------------------------------------------------------------------------
 
@@ -364,7 +388,7 @@
 \vfill\null
 
 %---------------------------------------------------------------------------------------
-%	META SKILLS
+%	SKILLS
 %----------------------------------------------------------------------------------------
 \cvsection{SKILLS}
 
@@ -389,35 +413,37 @@
 %\vfill\null
 %\cvqrcode{0.7}
 
+
+\newpage
 %---------------------------------------------------------------------------------------
 %	ACHIEVEMENTS
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{GATE}
-{Computer Science and Information Technology (CS)}
-{}
-{Qualified in 2016 with 389 score in general category.}
+%\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{IELTS}
-{7.0 out of 9 Band}
-{}
-{A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
+%\cvmetaevent
+%{GATE}
+%{Computer Science and Information Technology (CS)}
+%{}
+%{Qualified in 2016 with 389 score in general category.}
 
-\cvmetaevent
-{Cloud Computing 101}
-{94.30\%}
-{}
-{A certificate issued by coursera to prove basic understanding of cloud computing.}
+% \cvmetaevent
+% {IELTS}
+% {7.0 out of 9 Band}
+% {}
+% {A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
 
-\cvmetaevent
-{Achievement}
-{Certificate Detail}
-{}
-{Description will go here as a sentence.}
+% \cvmetaevent
+% {Cloud Computing 101}
+% {94.30\%}
+% {}
+% {A certificate issued by coursera to prove basic understanding of cloud computing.}
+
+% \cvmetaevent
+% {Achievement}
+% {Certificate Detail}
+% {}
+% {Description will go here as a sentence.}
 
 \end{leftcolumn}
 \begin{rightcolumn}
@@ -426,21 +452,34 @@
 %----------------------------------------------------------------------------------------
 \fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Nilson } } } } \\[-24pt]
+		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Ing. Nilson Vargas } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
+		\large{ \textcolor{white} { Desarrollador Backend } }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
 
+%---------------------------------------------------------------------------------------
+%	PERFIL
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{PERFIL}
+
+\cvtext{¡Hola! Soy un apasionado desarrollador backend con más de seis años de experiencia en la creación de sistemas y aplicaciones web. Tengo 22 años y actualmente resido en la Ciudad de Bogotá D.C, Colombia.}
+\vfill\null
 %---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 %\vfill\null
 \cvsection{EDUCATION}
 
-%{education}%
 
+\cvevent
+	{\textbf{@time}}
+	{@position-name}
+	{@entity}
+	{@description}
+\vfill\null
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
@@ -448,51 +487,28 @@
 \cvsection{WORK EXPERIENCE}
 
 \cvevent
-	{\textbf{0}}
-	{Ingeniero de Sistemas}
-	{Institute/Organization: Universidad Minuto de Dios}
-	{}
+	{\textbf{2023 - 2023}}
+	{Ingeniero de sistemas - Practicante}
+	{Acueducto y Alcantarillado de Bogotá S.A E.S.P}
+	{UwU1}
 \vfill\null
 
 \cvevent
-	{\textbf{0}}
-	{Bachiller Técnico en Mecatrónica}
-	{Institute/Organization: Intituto Técnico Industrial Francisco Jose De Caldas}
-	{}
-\vfill\null
-
-
-
-%---------------------------------------------------------------------------------------
-%	PUBLICATION
-%----------------------------------------------------------------------------------------
-\vspace{-0.5cm}
-\vfill\null
-\cvsection{PUBLICATIONS}
-
-\cvevent
-	{\textbf{UGC Listed}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Accepted and Published}
-	{}
+	{\textbf{2022 - 2022}}
+	{Lider de desarrollo de software}
+	{Xorex de Colombia S.A.S}
+	{UwU2}
 \vfill\null
 
 \cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
+	{\textbf{2022 - 2022}}
+	{Analista de servicios convergentes K63}
+	{Xorex de Colombia S.A.S}
+	{UwU3}
 \vfill\null
 
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
+
+
 %---------------------------------------------------------------------------------------
 %	PROJECTS
 %----------------------------------------------------------------------------------------
@@ -529,45 +545,56 @@
 %	WORKSHOPS
 %----------------------------------------------------------------------------------------
 \vfill\null
-\cvsection{WORKSHOPS \& CONFERENCES}
+\cvsection{CONFERENCES}
 
-\cvevent
-	{\textbf{Mon 20XX}}
-	{Name of Conference}
-	{Conducted by}
-	{}
-\vfill\null
+%{conferences}%
 
-\cvevent
-	{\textbf{May 2019}}
-	{IEEE Internation Conference on Future of Internet of Things}
-	{IEEE \& IIT Kanpur}
-	{}
-\vfill\null
 
-\cvevent
-	{\textbf{Jul 2020}}
-	{Online International Workshop on Machine Learning Applications to Images, IoT and Wireless Sensor Networks}
-	{University of Essex and IIIT, Lucknow}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------------------
 %	PERSONAL DETAILS
 %----------------------------------------------------------------------------------------
+% \vfill\null
+% \cvsection{EXTRACURRICULAR}
+% \vspace{-0.3cm}
+% \begin{itemize}
+%   \item Put all the points that are not covered in \textbf{above sections}.
+%   \item Put all the points that are \textbf{not covered} in above sections.
+%   \item Put all the \textbf{points} that are not covered in above sections.
+%   \item \textbf{Put all the points} that are not covered in above sections.
+% \end{itemize}
+% \vfill\null
+
+%---------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+\newpage
+\cvsection{References}
+
+\cvreference
+	{Edwin Becerra}
+	{Compañero de Universidad}
+	{319 436 23 62}
+	{Vínculo}
+	{Teléfono}
 \vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item Put all the points that are not covered in \textbf{above sections}.
-  \item Put all the points that are \textbf{not covered} in above sections.
-  \item Put all the \textbf{points} that are not covered in above sections.
-  \item \textbf{Put all the points} that are not covered in above sections.
-\end{itemize}
+
+\cvreference
+	{Giovanni Giorno}
+	{Comapañero de Universidad}
+	{govanni777@gmail.com}
+	{Vínculo}
+	{Correo}
 \vfill\null
+
+\cvreference
+	{Oscar Leiva}
+	{Lider CGP - Overtime - Xorex de Colombia S.A.S}
+	{312-488-8453}
+	{Vínculo}
+	{Teléfono}
+\vfill\null
+
 
 
 % hotfixes to create fake-space to ensure the whole height is used

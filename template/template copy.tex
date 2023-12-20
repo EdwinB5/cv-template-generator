@@ -291,6 +291,30 @@
 }
 
 %----------------------------------------------------------------------------------------
+%	 CV REFERENCE
+%----------------------------------------------------------------------------------------
+
+% param 1: Name
+% param 2: Position/Charge job
+% param 3: Phone number
+% param 4: Email
+\newcommand{\cvreference}[5] {
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\textbf{#1}} & \\
+			\textcolor{maincol}{\textbf{#4:} #2} & \\
+			\textcolor{maincol}{\textbf{#5:} #3} & \\
+		\end{tabular*}\\[4pt]
+	}
+
+	\vspace{4pt}
+}
+
+
+
+%----------------------------------------------------------------------------------------
 %	 CV META EVENT
 %----------------------------------------------------------------------------------------
 
@@ -360,7 +384,7 @@
 %{contact}%
 
 %---------------------------------------------------------------------------------------
-%	META SKILLS
+%	SKILLS
 %----------------------------------------------------------------------------------------
 \cvsection{SKILLS}
 
@@ -385,35 +409,37 @@
 %\vfill\null
 %\cvqrcode{0.7}
 
+
+\newpage
 %---------------------------------------------------------------------------------------
 %	ACHIEVEMENTS
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{GATE}
-{Computer Science and Information Technology (CS)}
-{}
-{Qualified in 2016 with 389 score in general category.}
+%\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{IELTS}
-{7.0 out of 9 Band}
-{}
-{A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
+%\cvmetaevent
+%{GATE}
+%{Computer Science and Information Technology (CS)}
+%{}
+%{Qualified in 2016 with 389 score in general category.}
 
-\cvmetaevent
-{Cloud Computing 101}
-{94.30\%}
-{}
-{A certificate issued by coursera to prove basic understanding of cloud computing.}
+% \cvmetaevent
+% {IELTS}
+% {7.0 out of 9 Band}
+% {}
+% {A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
 
-\cvmetaevent
-{Achievement}
-{Certificate Detail}
-{}
-{Description will go here as a sentence.}
+% \cvmetaevent
+% {Cloud Computing 101}
+% {94.30\%}
+% {}
+% {A certificate issued by coursera to prove basic understanding of cloud computing.}
+
+% \cvmetaevent
+% {Achievement}
+% {Certificate Detail}
+% {}
+% {Description will go here as a sentence.}
 
 \end{leftcolumn}
 \begin{rightcolumn}
@@ -424,18 +450,47 @@
 	\begin {center}
 		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ @name@ } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
+		\large{ \textcolor{white} { @rol@ } }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
 
+%---------------------------------------------------------------------------------------
+%	PERFIL
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{PERFIL}
+
+\cvtext{@perfil@}
+\vfill\null
 %---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 %\vfill\null
 \cvsection{EDUCATION}
 
-%{education}%
+\cvevent
+	{\textbf{10/08/2021}}
+	{@position-name}
+	{@entity}
+	{@description}
+\vfill\null
+
+%---------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{COMPLEMENTARY EDUCATION}
+
+\cvevent
+	{\textbf{10/08/2021}}
+	{Udemy}
+	{Máster C++ Programming From
+	Beginner To Advance – C++ Course}
+	{ 15 horas
+	}
+\vfill\null
+
 
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
@@ -445,36 +500,6 @@
 
 %{work_experience}%
 
-%---------------------------------------------------------------------------------------
-%	PUBLICATION
-%----------------------------------------------------------------------------------------
-\vspace{-0.5cm}
-\vfill\null
-\cvsection{PUBLICATIONS}
-
-\cvevent
-	{\textbf{UGC Listed}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Accepted and Published}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
 %---------------------------------------------------------------------------------------
 %	PROJECTS
 %----------------------------------------------------------------------------------------
@@ -511,46 +536,33 @@
 %	WORKSHOPS
 %----------------------------------------------------------------------------------------
 \vfill\null
-\cvsection{WORKSHOPS \& CONFERENCES}
+\cvsection{CONFERENCES}
 
-\cvevent
-	{\textbf{Mon 20XX}}
-	{Name of Conference}
-	{Conducted by}
-	{}
-\vfill\null
+%{conferences}%
 
-\cvevent
-	{\textbf{May 2019}}
-	{IEEE Internation Conference on Future of Internet of Things}
-	{IEEE \& IIT Kanpur}
-	{}
-\vfill\null
 
-\cvevent
-	{\textbf{Jul 2020}}
-	{Online International Workshop on Machine Learning Applications to Images, IoT and Wireless Sensor Networks}
-	{University of Essex and IIIT, Lucknow}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------------------
 %	PERSONAL DETAILS
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item Put all the points that are not covered in \textbf{above sections}.
-  \item Put all the points that are \textbf{not covered} in above sections.
-  \item Put all the \textbf{points} that are not covered in above sections.
-  \item \textbf{Put all the points} that are not covered in above sections.
-\end{itemize}
-\vfill\null
+% \vfill\null
+% \cvsection{EXTRACURRICULAR}
+% \vspace{-0.3cm}
+% \begin{itemize}
+%   \item Put all the points that are not covered in \textbf{above sections}.
+%   \item Put all the points that are \textbf{not covered} in above sections.
+%   \item Put all the \textbf{points} that are not covered in above sections.
+%   \item \textbf{Put all the points} that are not covered in above sections.
+% \end{itemize}
+% \vfill\null
 
+%---------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+\newpage
+\cvsection{References}
+
+%{references}%
 
 % hotfixes to create fake-space to ensure the whole height is used
 \vfill

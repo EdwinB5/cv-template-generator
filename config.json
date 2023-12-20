@@ -9,7 +9,7 @@
         "template_path":"./template/",
         "data_path": "./data/",
         "name_file_data": "cvdata.json",
-        "name_file_template": "template.tex"
+        "name_file_template": "template copy.tex"
     },
     "output":
     {
