@@ -1,0 +1,8 @@
+\cvcomplementary
+	{\textbf{@time}}
+	{@name}
+	{@entity}
+	{@schedule}
+	{@label-entity}
+	{@label-schedule}
+\vfill\null

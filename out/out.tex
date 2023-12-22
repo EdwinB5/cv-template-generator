@@ -262,7 +262,7 @@
 % Additional Information can be passed in text or list form (or other environments).
 % the work you did
 % param 1: time-frame i.e. Sep 14 - Jan 15 etc.
-% param 2:	 event name (job position etc.)
+% param 2: event name (job position etc.)
 % param 3: Customer, Employer, Industry
 % param 4: Short description
 % param 5: work done (optional)
@@ -289,6 +289,40 @@
 	}
 	\vspace{4pt}
 }
+
+%----------------------------------------------------------------------------------------
+%	 CV EDUCATION COMPLEMENTARY
+%----------------------------------------------------------------------------------------
+
+% Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
+% is glued together when a pagebreak appears).
+% Additional Information can be passed in text or list form (or other environments).
+% the work you did
+% param 1: time-frame i.e. Sep 14 - Jan 15 etc.
+% param 2: Course/School name
+% param 3: Value Entity/Institution name
+% param 4: Value Intense schedule
+% param 5: label entity/institution or else
+% param 6: label intense schedule
+\newcommand{\cvcomplementary}[6] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{maincol}{\textbf{\textit{#2}}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{black}{\textbf{#5} #3} & \\
+		\end{tabular*}
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{\textbf{#6}#4}\\
+		}
+	}
+
+	\vspace{4pt}
+}
+
+
 
 %----------------------------------------------------------------------------------------
 %	 CV REFERENCE
@@ -390,7 +424,7 @@
 %---------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
+\cvsection{Hard Skills}
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
@@ -401,6 +435,8 @@
 \cvskill{Python} {3+ yrs} {0.6} \\[-2pt]
 
 \cvskill{C++} {5+ yrs} {1} \\[-2pt]
+
+\cvsection{Soft Skills}
 
 \cvskill{Linux} {1+ yrs} {0.2} \\[-2pt]
 
@@ -473,13 +509,52 @@
 %\vfill\null
 \cvsection{EDUCATION}
 
+\cvevent
+	{\textbf{2019 - 2023}}
+	{Ingeniero de Sistemas}
+	{Intituto Técnico Industrial Francisco José de Caldas}
+	{Pasado con un promedio de 4.3/5.0.}
+\vfill\null
+
 
 \cvevent
-	{\textbf{@time}}
-	{@position-name}
-	{@entity}
-	{@description}
+	{\textbf{2016 - 2022}}
+	{Bachiller Técnico en la Especialidad de Mectrónica}
+	{Intituto Técnico Industrial Francisco José de Caldas}
+	{Pasado con proyecto de mectrónica.}
 \vfill\null
+
+
+
+
+%---------------------------------------------------------------------------------------
+%	EDUCATION COMPLEMENTARY
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{COMPLEMENTARY EDUCATION}
+
+\cvcomplementary
+	{\textbf{10/08/2022}}
+	{Máster C++ Programming From Beginner To Advance – C++ Course}
+	{Udemy}
+	{15 horas}
+	{Entidad: }
+	{Intensidad horaria: }
+\vfill\null
+
+
+\cvcomplementary
+	{\textbf{Agosto, 2023}}
+	{Curso de Modelaje y Belleza}
+	{En la calle}
+	{150 horas}
+	{Entity: }
+	{Intensidad horaria: }
+\vfill\null
+
+
+
+
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------

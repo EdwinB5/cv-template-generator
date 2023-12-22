@@ -7,7 +7,7 @@ class Compilator():
     @classmethod
     def proccess(cls, data:dict, components:dict, template: str, output_path: str) -> None:
         print("Compilator proccess init...")
-        print(components)
+        #print(components)
         
         # 1. Get components to replace
         print("Get components to replace...")
@@ -33,7 +33,7 @@ class Compilator():
                 path_component = cls.search_component(key, components)
                 
                 if path_component != None:
-                    print(f"Component found: {path_component}")
+                    #print(f"Component found: {path_component}")
                     
                     template_component = cls.get_component(path_component)
                     component_str = cls.replace_values(template_component, value)
@@ -66,7 +66,7 @@ class Compilator():
     @classmethod
     def replace_template(cls, template:str) -> None:
         for component in cls.list_str_components:
-            print(component)
+            #print(component)
             template = cls.replace_str(template, component, False)
         
         return template
