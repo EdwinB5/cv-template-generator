@@ -179,6 +179,10 @@
 % light color
 \definecolor{lightcol}{RGB}{245,245,245}
 
+% Bullet color softskill
+\definecolor{dotbad}{RGB}{ 194, 194, 195}
+\definecolor{dotgood}{RGB}{ 45, 50, 90 }
+
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -434,14 +438,19 @@
 
 \cvsection{Soft Skills}
 
-\cvskill{Linux} {1+ yrs} {0.2} \\[-2pt]
+\newcommand{\skill}[2]{%
+	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
+		\textcolor{black}{\textbf{#1}}
+		\hfill\null
+		\foreach \x in {1,...,5}{%
+      		\space{\ifnumgreater{\x}{#2}{\color{dotbad}}{\color{dotgood}}\faCircle}}\par%
+   \end{tabular*} \\[-10pt]
+}
 
-\cvskill{Web Development} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Quantum Computing} {1+ yrs} {0.2} \\[-2pt]
-
-\cvskill{Teaching} {3+ yrs} {0.6} \\[-2pt]
-
+\skill{Sexo}{3}
+\skill{Dormir}{5}
+\skill{Dormir desnudo}{5}
+\skill{Comer sin ropa}{4}
 %\vfill\null
 %\cvqrcode{0.7}
 
