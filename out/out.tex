@@ -179,6 +179,10 @@
 % light color
 \definecolor{lightcol}{RGB}{245,245,245}
 
+% Bullet color softskill
+\definecolor{dotbad}{RGB}{ 194, 194, 195}
+\definecolor{dotgood}{RGB}{ 45, 50, 90 }
+
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -240,7 +244,7 @@
 % param 1: name of the skill / tech / etc.
 % param 2: level (for example in years)
 % param 3: percent, values range from 0 to 1
-\newcommand{\cvskill}[3] {
+\newcommand{\cvhardskill}[3] {
 	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
  		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
 	\end{tabular*}%
@@ -252,6 +256,18 @@
   	\end{tikzpicture}%
 }
 
+% Renders a dot to indicate a certain skill.
+% param 1: name of the skill / tech / etc.
+% param 2: level (for example in N dots)
+
+\newcommand{\cvsoftskill}[2]{%
+	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
+		\textcolor{black}{\textbf{#1}}
+		\hfill\null
+		\foreach \x in {1,...,5}{%
+      		\space{\ifnumgreater{\x}{#2}{\color{dotbad}}{\color{dotgood}}\faCircle}}\par%
+   \end{tabular*} \\[-10pt]
+}
 
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
@@ -428,23 +444,27 @@
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
-\cvskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
+\cvhardskill{C++} {5} {0.5} \\[-2pt]
 
-\cvskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
+\cvhardskill{Python} {5} {0.5} \\[-2pt]
 
-\cvskill{Python} {3+ yrs} {0.6} \\[-2pt]
+\cvhardskill{Java} {5} {1} \\[-2pt]
 
-\cvskill{C++} {5+ yrs} {1} \\[-2pt]
+
+%\cvhardskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
+
+%\cvhardskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
+
+%\cvhardskill{Python} {3+ yrs} {0.6} \\[-2pt]
+
+%\cvhardskill{C++} {5+ yrs} {1} \\[-2pt]
 
 \cvsection{Soft Skills}
 
-\cvskill{Linux} {1+ yrs} {0.2} \\[-2pt]
+\cvsoftskill{Trabajo en equipo}{4}
 
-\cvskill{Web Development} {5+ yrs} {1} \\[-2pt]
+\cvsoftskill{Ingles}{5}
 
-\cvskill{Quantum Computing} {1+ yrs} {0.2} \\[-2pt]
-
-\cvskill{Teaching} {3+ yrs} {0.6} \\[-2pt]
 
 %\vfill\null
 %\cvqrcode{0.7}
@@ -619,8 +639,8 @@
 %---------------------------------------------------------------------------------------
 %	WORKSHOPS
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{CONFERENCES}
+%\vfill\null
+%\cvsection{CONFERENCES}
 
 %{conferences}%
 
