@@ -244,7 +244,7 @@
 % param 1: name of the skill / tech / etc.
 % param 2: level (for example in years)
 % param 3: percent, values range from 0 to 1
-\newcommand{\cvskill}[3] {
+\newcommand{\cvhardskill}[3] {
 	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
  		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
 	\end{tabular*}%
@@ -256,6 +256,18 @@
   	\end{tikzpicture}%
 }
 
+% Renders a dot to indicate a certain skill.
+% param 1: name of the skill / tech / etc.
+% param 2: level (for example in N dots)
+
+\newcommand{\cvsoftskill}[2]{%
+	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
+		\textcolor{black}{\textbf{#1}}
+		\hfill\null
+		\foreach \x in {1,...,5}{%
+      		\space{\ifnumgreater{\x}{#2}{\color{dotbad}}{\color{dotgood}}\faCircle}}\par%
+   \end{tabular*} \\[-10pt]
+}
 
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
@@ -428,29 +440,23 @@
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
-\cvskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
+%{hard_skills}%
+%\cvhardskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
 
-\cvskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
+%\cvhardskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
 
-\cvskill{Python} {3+ yrs} {0.6} \\[-2pt]
+%\cvhardskill{Python} {3+ yrs} {0.6} \\[-2pt]
 
-\cvskill{C++} {5+ yrs} {1} \\[-2pt]
+%\cvhardskill{C++} {5+ yrs} {1} \\[-2pt]
 
 \cvsection{Soft Skills}
 
-\newcommand{\skill}[2]{%
-	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
-		\textcolor{black}{\textbf{#1}}
-		\hfill\null
-		\foreach \x in {1,...,5}{%
-      		\space{\ifnumgreater{\x}{#2}{\color{dotbad}}{\color{dotgood}}\faCircle}}\par%
-   \end{tabular*} \\[-10pt]
-}
+%{soft_skills}%
 
-\skill{Sexo}{3}
-\skill{Dormir}{5}
-\skill{Dormir desnudo}{5}
-\skill{Comer sin ropa}{4}
+%\cvsoftskill{Sexo}{3}
+%\cvsoftskill{Dormir}{5}
+%\cvsoftskill{Dormir desnudo}{5}
+%\cvsoftskill{Comer sin ropa}{4}
 %\vfill\null
 %\cvqrcode{0.7}
 
@@ -567,8 +573,8 @@
 %---------------------------------------------------------------------------------------
 %	WORKSHOPS
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{CONFERENCES}
+%\vfill\null
+%\cvsection{CONFERENCES}
 
 %{conferences}%
 
