@@ -88,7 +88,7 @@
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+	\makebox(#2, #2){\textcolor{primary_color}{\csname fa#1\endcsname}}
 }	
 
 % icon with text shortcut
@@ -118,9 +118,6 @@
 
 % define page styles using geometry
 \usepackage[a4paper]{geometry}
-
-% remove all possible margins
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
 
 \usepackage{fancyhdr}
 \pagestyle{empty}
@@ -183,6 +180,24 @@
 \definecolor{dotbad}{RGB}{ 194, 194, 195}
 \definecolor{dotgood}{RGB}{ 45, 50, 90 }
 
+% COLORS FOR MAIN COLUMNS
+\definecolor{column_a}{RGB}{13, 17, 23} % Background main color
+\definecolor{column_b}{RGB}{23, 27, 34} % Background main color
+
+% HEADER COLOR
+\definecolor{headercol}{RGB}{13, 17, 23}
+
+%Text color
+\definecolor{text_color}{RGB}{255, 255, 255}
+
+\definecolor{title_color}{RGB}{255, 255, 255}
+
+\definecolor{primary_color}{HTML}{1f6feb}
+\definecolor{secondary_color}{HTML}{72A0C1}
+
+
+% remove all possible margins
+\geometry{top=0cm, bottom=0cm, left=0cm, right=0cm}
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -218,7 +233,7 @@
 % param 1: *any
 \newcommand{\cvtext}[1] {
 	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
-		\parbox{1\mpwidth}{#1}
+		\parbox{1\mpwidth}{\textcolor{text_color}{#1}}
 	\end{tabular*}
 }
 
@@ -231,8 +246,8 @@
 \newcommand{\cvsection}[1] {
 	\vspace{14pt}
 	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+		\textbf{\LARGE{\textcolor{title_color}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{primary_color}{ \rule{0.1\textwidth}{2pt} } \\
 	}
 }
 
@@ -246,13 +261,13 @@
 % param 3: percent, values range from 0 to 1
 \newcommand{\cvhardskill}[3] {
 	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+ 		\textcolor{text_color}{\textbf{#1}} & \textcolor{text_color}{#2}\\
 	\end{tabular*}%
 	
 	\hspace{4pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+		\fill [secondary_color] (0,0) rectangle (1\mpwidth, 0.15);
+		\fill [primary_color] (0,0) rectangle (#3\mpwidth, 0.15);
   	\end{tikzpicture}%
 }
 
@@ -262,10 +277,10 @@
 
 \newcommand{\cvsoftskill}[2]{%
 	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
-		\textcolor{black}{\textbf{#1}}
+		\textcolor{text_color}{\textbf{#1}}
 		\hfill\null
 		\foreach \x in {1,...,5}{%
-      		\space{\ifnumgreater{\x}{#2}{\color{dotbad}}{\color{dotgood}}\faCircle}}\par%
+      		\space{\ifnumgreater{\x}{#2}{\color{secondary_color}}{\color{primary_color}}\faCircle}}\par%
    \end{tabular*} \\[-10pt]
 }
 
@@ -290,12 +305,12 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{text_color}{\textbf{#2}} & \colorbox{primary_color}{\makebox[0.25\mpwidth]{\textcolor{text_color}{#1}}} \\
+			\textcolor{secondary_color}{\textbf{#3}} & \\
 		\end{tabular*}\\[4pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
+			\textcolor{text_color}{\cvtext{#4}}\\
 		}
 	}
 
@@ -326,16 +341,14 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{maincol}{\textbf{\textit{#2}}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{black}{\textbf{#5} #3} & \\
+	 		\textcolor{secondary_color}{\textbf{\textit{#2}}} & \colorbox{primary_color}{\makebox[0.25\mpwidth]{\textcolor{text_color}{#1}}} \\
+			\textcolor{text_color}{\textbf{#5} #3} & \\
 		\end{tabular*}
 	
 		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{\textbf{#6}#4}\\
+			\textcolor{text_color}{\cvtext{\textbf{#6}#4}}\\
 		}
 	}
-
-	\vspace{4pt}
 }
 
 
@@ -353,9 +366,9 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#1}} & \\
-			\textcolor{maincol}{\textbf{#4:} #2} & \\
-			\textcolor{maincol}{\textbf{#5:} #3} & \\
+	 		\textcolor{text_color}{\textbf{#1}} & \\
+			\textcolor{text_color}{\textbf{#4:} #2} & \\
+			\textcolor{text_color}{\textbf{#5:} #3} & \\
 		\end{tabular*}\\[4pt]
 	}
 
@@ -416,12 +429,20 @@
 %
 %============================================================================%
 \begin{document}
-\columnratio{0.31}
-\setlength{\columnsep}{2.2em}
-\setlength{\columnseprule}{4pt}
-\colseprulecolor{lightcol}
+\columnratio{0.30}
+\setlength{\columnsep}{0pt}
+
+\setlength{\columnseprule}{1pt}
+\colseprulecolor{column_a}
+
+\backgroundcolor{c[0]}{column_a} % pink for colunmn-0
+\backgroundcolor{c[1]}{column_b} % cream yellow for column-1
+
+
 \begin{paracol}{2}
+
 \begin{leftcolumn}
+
 %---------------------------------------------------------------------------------------
 %	META IMAGE
 %----------------------------------------------------------------------------------------
@@ -492,7 +513,7 @@
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{headercol}{headercol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
 		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ @name@ } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
@@ -508,7 +529,7 @@
 \cvsection{PERFIL}
 
 \cvtext{@perfil@}
-\vfill\null
+
 %---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
@@ -528,6 +549,7 @@
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
+\newpage
 \vfill\null
 \cvsection{WORK EXPERIENCE}
 
@@ -537,33 +559,17 @@
 %	PROJECTS
 %----------------------------------------------------------------------------------------
 
-\vfill\null
-\cvsection{PROJECTS}
+%\vfill\null
+%\cvsection{PROJECTS}
 
-%{PROJECTS}%
+%{projects}%
 
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Python, Raspberry Pi}
-	{A short description of your project.}
-\vfill\null
-
-
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Web Development}
-	{A short description of your project.}
-\vfill\null
-
-
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Android Studio}
-	{A short description of your project.}
-\vfill\null
+%\cvevent
+%	{\textbf{20XX}}
+%	{Project Name}
+%	{Tool: Python, Raspberry Pi}
+%	{A short description of your project.}
+%\vfill\null
 
 %---------------------------------------------------------------------------------------
 %	WORKSHOPS
@@ -593,14 +599,14 @@
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 \newpage
+\vfill\null
 \cvsection{References}
 
 %{references}%
 
 % hotfixes to create fake-space to ensure the whole height is used
-\vfill
-\vfill
-\vfill
+\vspace*{0.7\textheight}
+
 \end{rightcolumn}
 \end{paracol}
 \end{document}

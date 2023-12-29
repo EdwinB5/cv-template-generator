@@ -3,4 +3,4 @@
 	{@position_name}
 	{@entity}
 	{@description}
-\vfill\null
+\vspace*{\fill}

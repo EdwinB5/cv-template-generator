@@ -1,5 +1,5 @@
-\iconemail{EnvelopeSquare}{14}{@email}{@email}{black}\\[6pt]
-\icontext{Github}{14}{\href{@github_url}{@github_id}}{black}\\[6pt]
-\icontext{Linkedin}{14}{\href{@linkedin_url}{@linkedin_id}}{black}\\[6pt]
-\icontext{Phone}{14}{@phone}{black}\\[6pt]
+\iconemail{EnvelopeSquare}{14}{@email}{@email}{text_color}\\[6pt]
+\icontext{Github}{14}{\href{@github_url}{@github_id}}{text_color}\\[6pt]
+\icontext{Linkedin}{14}{\href{@linkedin_url}{@linkedin_id}}{text_color}\\[6pt]
+\icontext{Phone}{14}{@phone}{text_color}\\[6pt]
 \vfill\null
