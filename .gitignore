@@ -13,7 +13,7 @@
 .*.lb
 
 data/cvdata.json
-
+out/*
 ## Intermediate documents:
 *.dvi
 *.xdv
