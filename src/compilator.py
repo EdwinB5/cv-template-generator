@@ -2,24 +2,33 @@ class Compilator():
     
     #Static variables
     list_str_components = []
+    list_str_properties = []
 
 
     @classmethod
-    def proccess(cls, data:dict, components:dict, template: str, output_path: str) -> None:
+    def proccess(cls, data:dict, components:dict, data_properties:dict, properties:dict, template: str, output_path: str) -> None:
         print("Compilator proccess init...")
         #print(components)
         
         # 1. Get components to replace
         print("Get components to replace...")
-        cls.get_to_replace(data, components)
+        cls.get_to_replace(data, components, cls.list_str_components)
         print("Components OK... ")
 
-        # 2. Replace components in template
+        # 2. Get properties to replace
+        print("Get properties to replace...")
+        cls.get_to_replace(data_properties, properties, cls.list_str_properties, delimiter='% key')
+        print(f'Properties ok... \n {cls.list_str_properties}')
+        
+        # 3. Replace components in template
         print("Replace components in template...")
         template = cls.replace_template(template)
         print("Replace components OK...")
 
-        # 3. Save template in output path
+        # 4.  Replace properties in template
+        template = cls.replace_propierties(template)
+        
+        # 5. Save template in output path
         print("Save template in output path...")
         with open(output_path, 'w', encoding='utf-8') as file_output:
             file_output.write(template)
@@ -27,7 +36,7 @@ class Compilator():
 
 
     @classmethod
-    def get_to_replace(cls, data:dict, components:dict) -> None:
+    def get_to_replace(cls, data:dict, components:dict, target, delimiter: str = '%{key}%') -> None:
         for key, value in data.items():
             if isinstance(value, list):
                 path_component = cls.search_component(key, components)
@@ -39,10 +48,10 @@ class Compilator():
                     component_str = cls.replace_values(template_component, value)
                     
                     component = {}
-                    nw_key = str('%{key}%').replace('key', key)
+                    nw_key = str(delimiter).replace('key', key)
                     component[nw_key] = component_str
 
-                    cls.list_str_components.append(component)
+                    target.append(component)
 
                 else:
                    print("Component not found")
@@ -53,15 +62,15 @@ class Compilator():
                     template_component = cls.get_component(path_component)
                     component_str = cls.replace_str(template_component, value)
                     component = {}
-                    nw_key = str('%{key}%').replace('key', key)
+                    nw_key = str(delimiter).replace('key', key)
                     component[nw_key] = component_str
-                    cls.list_str_components.append(component)
+                    target.append(component)
                 else:
                     for field, sub_value in value.items():
                         field_t = {}
                         nw_key = str('@key@').replace('key', field)
                         field_t[nw_key] = sub_value
-                        cls.list_str_components.append(field_t)
+                        target.append(field_t)
 
     @classmethod
     def replace_template(cls, template:str) -> None:
@@ -70,6 +79,22 @@ class Compilator():
             template = cls.replace_str(template, component, False)
         
         return template
+
+
+    @classmethod
+    def replace_propierties(cls, template:str) -> str:
+        for propertie in cls.list_str_properties:
+            for key, value in propertie.items():
+                
+                delimiter_start = key
+                delimiter_end = f'{key} end'
+                
+                index_start = template.index(delimiter_start) + len(delimiter_start)
+                index_end = template.index(delimiter_end)
+
+            template = template[:index_start] + value + template[index_end:]
+            
+        return template    
 
     
     @staticmethod
@@ -92,7 +117,7 @@ class Compilator():
         # Example: VALUE: @DESCRIPTION - COMPONENT TEMPLATE: @DESCRIPTION@
         format_str = ''
         for data in list_data:
-            format_str += cls.replace_str(component, data) + '\n\n'
+            format_str += cls.replace_str(component, data) + '\n'
          
         return format_str
     

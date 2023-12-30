@@ -1,0 +1,9 @@
+{
+    "colors": [
+        {
+            "value": "123, 255, 1",
+            "model": "RGB",
+            "name": "primary_color"
+        }
+    ]
+}

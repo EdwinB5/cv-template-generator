@@ -6,10 +6,13 @@
     },
     "input":{
         "components_path": "./src/components/",
+        "properties_path": "./src/properties/",
         "template_path":"./template/",
+        "name_file_template": "template copy.tex",
         "data_path": "./data/",
         "name_file_data": "cvdata.json",
-        "name_file_template": "template copy.tex"
+        "data_properties_path": "./data/",
+        "name_file_properties": "cvconfig.json"
     },
     "output":
     {
