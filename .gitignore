@@ -13,6 +13,7 @@
 .*.lb
 
 data/cvdata.json
+data/cvconfig.json
 out/*
 ## Intermediate documents:
 *.dvi
