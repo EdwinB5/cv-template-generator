@@ -41,7 +41,7 @@ class Compilator():
         print("Move folder resources to output path...")
         try:
             print(f"Copy folder: /template/assets to /out/assets")
-            shutil.copytree("./template/assets", "./out/assets")
+            shutil.copytree("./template/assets", "./out/assets", dirs_exist_ok=True)
         except Exception as e:
             print(f"Error to copy folder: {e}")
 
