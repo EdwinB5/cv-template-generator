@@ -1,3 +1,6 @@
+import os
+import shutil
+
 class Compilator():
     
     #Static variables
@@ -34,6 +37,13 @@ class Compilator():
             file_output.write(template)
         print("Compilator proccess finished...")
 
+        # 6. Move folder resources to output path
+        print("Move folder resources to output path...")
+        try:
+            print(f"Copy folder: /template/assets to /output/assets")
+            shutil.copytree("./template/assets", "./output/assets")
+        except Exception as e:
+            print(f"Error to copy folder: {e}")
 
     @classmethod
     def get_to_replace(cls, data:dict, components:dict, target, delimiter: str = '%{key}%') -> None:
