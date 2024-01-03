@@ -14,6 +14,7 @@
 
 data/cvdata.json
 data/cvconfig.json
+env
 out/*
 ## Intermediate documents:
 *.dvi
