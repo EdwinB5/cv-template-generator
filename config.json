@@ -8,7 +8,7 @@
         "components_path": "./src/components/",
         "properties_path": "./src/properties/",
         "template_path":"./template/",
-        "name_file_template": "template copy.tex",
+        "name_file_template": "template.tex",
         "data_path": "./data/",
         "name_file_data": "cvdata.json",
         "data_properties_path": "./data/",

@@ -40,10 +40,15 @@ class Compilator():
         # 6. Move folder resources to output path
         print("Move folder resources to output path...")
         try:
-            print(f"Copy folder: /template/assets to /output/assets")
-            shutil.copytree("./template/assets", "./output/assets")
+            print(f"Copy folder: /template/assets to /out/assets")
+            shutil.copytree("./template/assets", "./out/assets")
         except Exception as e:
             print(f"Error to copy folder: {e}")
+
+        # 7. Compilte file to pdf
+        os.system("pdflatex -quiet -output-directory=./out ./out.tex")
+
+        # 8. Remove last page pdf
 
     @classmethod
     def get_to_replace(cls, data:dict, components:dict, target, delimiter: str = '%{key}%') -> None:

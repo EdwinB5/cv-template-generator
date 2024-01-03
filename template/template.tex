@@ -87,8 +87,9 @@
 \setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
 
 % icon shortcut
-\newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+\newcommand{\icon}[3] { 	
+	\hspace{3pt}						
+	\makebox(#2, #2){\textcolor{primary_color}{\csname fa#1\endcsname}}
 }	
 
 % icon with text shortcut
@@ -118,9 +119,6 @@
 
 % define page styles using geometry
 \usepackage[a4paper]{geometry}
-
-% remove all possible margins
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
 
 \usepackage{fancyhdr}
 \pagestyle{empty}
@@ -166,6 +164,7 @@
 %---------------------------------------------------------------------------------------- 
 \usepackage{transparent}
 \usepackage{color}
+% colors
 
 % primary color
 \definecolor{maincol}{RGB}{ 45, 50, 90 }
@@ -177,8 +176,31 @@
 \definecolor{darkcol}{RGB}{ 70, 70, 70 }
 
 % light color
-\definecolor{lightcol}{RGB}{0,245,245}
+\definecolor{lightcol}{RGB}{245,245,245}
 
+% Bullet color softskill
+\definecolor{dotbad}{RGB}{ 194, 194, 195}
+\definecolor{dotgood}{RGB}{ 45, 50, 90 }
+
+% COLORS FOR MAIN COLUMNS
+\definecolor{column_a}{RGB}{13, 17, 23} % Background main color
+\definecolor{column_b}{RGB}{23, 27, 34} % Background main color
+
+% HEADER COLOR
+\definecolor{headercol}{RGB}{13, 17, 23}
+
+%Text color
+\definecolor{text_color}{RGB}{255, 255, 255}
+
+\definecolor{title_color}{RGB}{255, 255, 255}
+
+\definecolor{primary_color}{HTML}{1f6feb}
+\definecolor{secondary_color}{HTML}{72A0C1}
+
+% colors end
+
+% remove all possible margins
+\geometry{top=0cm, bottom=0cm, left=0cm, right=0cm}
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -213,23 +235,46 @@
 % Allows complex commands to be passed, too.
 % param 1: *any
 \newcommand{\cvtext}[1] {
+	\begin{pmargin}{t}{\mpwidth}{0pt}{3pt}
 	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
-		\parbox{1\mpwidth}{#1}
+		\parbox{1\mpwidth}{\textcolor{text_color}{#1}}
 	\end{tabular*}
+	\end{pmargin}
 }
 
 %----------------------------------------------------------------------------------------
 %	CV SECTION
 %----------------------------------------------------------------------------------------
 
+%----------------------------------------------------------------------------------------
+%	CV SECTION SPACE ENVIRONMENT
+%----------------------------------------------------------------------------------------
+% param 1: position t (top), c (center), b (bottom)
+% param 2: size in pt, cm, etc.
+% param 3: vspace in pt, cm, etc. 
+% param 4: hspace in pt, cm, etc
+\newenvironment{pmargin}[4]{%
+	\def\verspace{#3}
+	\def\horspace{#4}
+	\vspace{\verspace} %14pt
+	\hspace{\horspace}	%3pt
+	\begin{minipage}[#1]{#2}
+	
+}{
+	\vspace{\verspace} %14pt
+    \hspace{\horspace} %3ptrspace 
+	\end{minipage}
+}
+
 % Renders a a CV section headline with a nice underline in main color.
 % param 1: section title
 \newcommand{\cvsection}[1] {
-	\vspace{14pt}
+	\begin{pmargin}{t}{\mpwidth}{0pt}{-1pt}
 	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+		\textbf{\LARGE{\textcolor{title_color}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{primary_color}{ \rule{0.1\textwidth}{2pt} } \\
 	}
+	\end{pmargin}
 }
 
 %----------------------------------------------------------------------------------------
@@ -240,18 +285,33 @@
 % param 1: name of the skill / tech / etc.
 % param 2: level (for example in years)
 % param 3: percent, values range from 0 to 1
-\newcommand{\cvskill}[3] {
+\newcommand{\cvhardskill}[3] {
 	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+		\hspace{3pt}
+ 		\textcolor{text_color}{\textbf{#1}} & \textcolor{text_color}{#2}\\
 	\end{tabular*}%
 	
-	\hspace{4pt}
+	\hspace{7pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
-  	\end{tikzpicture}%
+		\fill [secondary_color] (0,0) rectangle (0.90\mpwidth, 0.15);
+		\fill [primary_color] (0,0) rectangle (#3 * 0.90\mpwidth, 0.15);
+	\end{tikzpicture}%
 }
 
+% Renders a dot to indicate a certain skill.
+% param 1: name of the skill / tech / etc.
+% param 2: level (for example in N dots)
+
+\newcommand{\cvsoftskill}[2]{%
+\begin{pmargin}{t}{\mpwidth}{0pt}{3pt}
+	\begin{tabular*}{1\mpwidth}{p{0.97\mpwidth}  r}
+		\textcolor{text_color}{\textbf{#1}}
+		\hfill\null
+		\foreach \x in {1,...,5}{%
+      		\space{\ifnumgreater{\x}{#2}{\color{secondary_color}}{\color{primary_color}}\faCircle}}\par%
+   \end{tabular*} \\[-10pt]
+\end{pmargin}
+}
 
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
@@ -262,7 +322,7 @@
 % Additional Information can be passed in text or list form (or other environments).
 % the work you did
 % param 1: time-frame i.e. Sep 14 - Jan 15 etc.
-% param 2:	 event name (job position etc.)
+% param 2: event name (job position etc.)
 % param 3: Customer, Employer, Industry
 % param 4: Short description
 % param 5: work done (optional)
@@ -273,22 +333,90 @@
 	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
-		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+		\begin{tabular*}{1\mpwidth}{p{0.65\mpwidth}  r}
+			\hspace{3pt}
+	 		\textcolor{text_color}{\textbf{#2}} & \colorbox{primary_color}{\makebox[0.28\mpwidth]{\textcolor{text_color}{#1}}} \\
+			 \hspace{3pt}
+			\textcolor{secondary_color}{\textbf{#3}} & \\
+			\vspace{6pt}	
+			\ifthenelse{\isempty{#4}}{}{
+				\hspace{3pt}
+				\parbox{\mpwidth}{\textcolor{text_color}{#4}}\\
+			}
 		\end{tabular*}\\[4pt]
 	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
-		}
-	}
 
+	}
 	\ifthenelse{\isempty{#5}}{}{
 		\vspace{4pt}
 		{#5}
 	}
 	\vspace{4pt}
+
 }
+
+%----------------------------------------------------------------------------------------
+%	 CV EDUCATION COMPLEMENTARY
+%----------------------------------------------------------------------------------------
+
+% Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
+% is glued together when a pagebreak appears).
+% Additional Information can be passed in text or list form (or other environments).
+% the work you did
+% param 1: time-frame i.e. Sep 14 - Jan 15 etc.
+% param 2: Course/School name
+% param 3: Value Entity/Institution name
+% param 4: Value Intense schedule
+% param 5: label entity/institution or else
+% param 6: label intense schedule
+\newcommand{\cvcomplementary}[6] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+			\hspace{3pt}
+	 		\textcolor{secondary_color}{\parbox{\mpwidth}{\textbf{\textit{#2}}}} & \colorbox{primary_color}{\makebox[0.25\mpwidth]{\textcolor{text_color}{#1}}} \\
+			\vspace{1pt}
+			\hspace{3pt}
+			\parbox{\mpwidth}{\textcolor{text_color}{\textbf{#5} #3}} & \\
+			\vspace{2pt}
+			\ifthenelse{\isempty{#4}}{}{
+			\hspace{3pt}
+			\parbox{\mpwidth}{\textcolor{text_color}{\textbf{#6}#4}}\\
+			}
+		\end{tabular*}
+	}
+	\vspace{4pt}
+}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	 CV REFERENCE
+%----------------------------------------------------------------------------------------
+
+% param 1: Name
+% param 2: Position/Charge job
+% param 3: Phone number
+% param 4: Email
+\newcommand{\cvreference}[5] {
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\hspace{3pt}
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{text_color}{\textbf{#1}} & \\
+			\textcolor{text_color}{\textbf{#4:} #2} & \\
+			\textcolor{text_color}{\textbf{#5:} #3} & \\
+		\end{tabular*}\\[4pt]
+	}
+
+	\vspace{4pt}
+}
+
+
 
 %----------------------------------------------------------------------------------------
 %	 CV META EVENT
@@ -341,221 +469,187 @@
 %
 %
 %============================================================================%
+
+% Configuración para limitar el número de páginas
+\batchmode
+\maxdeadcycles=3
+
 \begin{document}
-\columnratio{0.31}
-\setlength{\columnsep}{2.2em}
-\setlength{\columnseprule}{4pt}
-\colseprulecolor{lightcol}
+\columnratio{0.30}
+\setlength{\columnsep}{0pt}
+
+\setlength{\columnseprule}{1pt}
+\colseprulecolor{column_a}
+
+\backgroundcolor{c[0]}{column_a} % pink for colunmn-0
+\backgroundcolor{c[1]}{column_b} % cream yellow for column-1
+
+
 \begin{paracol}{2}
+
 \begin{leftcolumn}
+
 %---------------------------------------------------------------------------------------
 %	META IMAGE
 %----------------------------------------------------------------------------------------
-%\includegraphics[width=\linewidth]{untitled.jpg}	%trimming relative to image size
+\includegraphics[width=\linewidth]{./assets/perfil.png}	%trimming relative to image size
 
-
-\vfill\null
-\cvsection{CONTACT}
+\cvsection{@lblContact@}
 
 %{contact}%
 
 %---------------------------------------------------------------------------------------
-%	META SKILLS
+%	SKILLS
 %----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
+\cvsection{@lblHardskills@}
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
-\cvskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
+%{hard_skills}%
+%\cvhardskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
 
-\cvskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
+%\cvhardskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
 
-\cvskill{Python} {3+ yrs} {0.6} \\[-2pt]
+%\cvhardskill{Python} {3+ yrs} {0.6} \\[-2pt]
 
-\cvskill{C++} {5+ yrs} {1} \\[-2pt]
+%\cvhardskill{C++} {5+ yrs} {1} \\[-2pt]
 
-\cvskill{Linux} {1+ yrs} {0.2} \\[-2pt]
+\cvsection{@lblSoftskills@}
 
-\cvskill{Web Development} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Quantum Computing} {1+ yrs} {0.2} \\[-2pt]
-
-\cvskill{Teaching} {3+ yrs} {0.6} \\[-2pt]
-
+%{soft_skills}%
 %\vfill\null
 %\cvqrcode{0.7}
 
+
+\newpage
 %---------------------------------------------------------------------------------------
 %	ACHIEVEMENTS
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{GATE}
-{Computer Science and Information Technology (CS)}
-{}
-{Qualified in 2016 with 389 score in general category.}
+%\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{IELTS}
-{7.0 out of 9 Band}
-{}
-{A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
+%\cvmetaevent
+%{GATE}
+%{Computer Science and Information Technology (CS)}
+%{}
+%{Qualified in 2016 with 389 score in general category.}
 
-\cvmetaevent
-{Cloud Computing 101}
-{94.30\%}
-{}
-{A certificate issued by coursera to prove basic understanding of cloud computing.}
+% \cvmetaevent
+% {IELTS}
+% {7.0 out of 9 Band}
+% {}
+% {A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
 
-\cvmetaevent
-{Achievement}
-{Certificate Detail}
-{}
-{Description will go here as a sentence.}
+% \cvmetaevent
+% {Cloud Computing 101}
+% {94.30\%}
+% {}
+% {A certificate issued by coursera to prove basic understanding of cloud computing.}
 
+% \cvmetaevent
+% {Achievement}
+% {Certificate Detail}
+% {}
+% {Description will go here as a sentence.}
 \end{leftcolumn}
 \begin{rightcolumn}
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{headercol}{headercol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
 		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ @name@ } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
+		\large{ \textcolor{white} { @rol@ } }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
 
 %---------------------------------------------------------------------------------------
+%	PERFIL
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{@lblPerfil@}
+
+\cvtext{@perfil@}
+
+%---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 %\vfill\null
-\cvsection{EDUCATION}
+\cvsection{@lblEducation@}
 
 %{education}%
 
 %---------------------------------------------------------------------------------------
+%	EDUCATION COMPLEMENTARY
+%----------------------------------------------------------------------------------------
+%\vfill\null
+\cvsection{@lblComplementaryeducation@}
+
+%{education_complementary}%
+
+%---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
+\newpage
 \vfill\null
-\cvsection{WORK EXPERIENCE}
+\cvsection{@lblWorkexperience@}
 
 %{work_experience}%
 
 %---------------------------------------------------------------------------------------
-%	PUBLICATION
-%----------------------------------------------------------------------------------------
-\vspace{-0.5cm}
-\vfill\null
-\cvsection{PUBLICATIONS}
-
-\cvevent
-	{\textbf{UGC Listed}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Accepted and Published}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
 %	PROJECTS
 %----------------------------------------------------------------------------------------
 
-\vfill\null
-\cvsection{PROJECTS}
+%\vfill\null
+%\cvsection{PROJECTS}
 
-%{PROJECTS}%
+%{projects}%
 
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Python, Raspberry Pi}
-	{A short description of your project.}
-\vfill\null
-
-
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Web Development}
-	{A short description of your project.}
-\vfill\null
-
-
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Android Studio}
-	{A short description of your project.}
-\vfill\null
+%\cvevent
+%	{\textbf{20XX}}
+%	{Project Name}
+%	{Tool: Python, Raspberry Pi}
+%	{A short description of your project.}
+%\vfill\null
 
 %---------------------------------------------------------------------------------------
 %	WORKSHOPS
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{WORKSHOPS \& CONFERENCES}
+%\vfill\null
+%\cvsection{CONFERENCES}
 
-\cvevent
-	{\textbf{Mon 20XX}}
-	{Name of Conference}
-	{Conducted by}
-	{}
-\vfill\null
+%{conferences}%
 
-\cvevent
-	{\textbf{May 2019}}
-	{IEEE Internation Conference on Future of Internet of Things}
-	{IEEE \& IIT Kanpur}
-	{}
-\vfill\null
 
-\cvevent
-	{\textbf{Jul 2020}}
-	{Online International Workshop on Machine Learning Applications to Images, IoT and Wireless Sensor Networks}
-	{University of Essex and IIIT, Lucknow}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------------------
 %	PERSONAL DETAILS
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item Put all the points that are not covered in \textbf{above sections}.
-  \item Put all the points that are \textbf{not covered} in above sections.
-  \item Put all the \textbf{points} that are not covered in above sections.
-  \item \textbf{Put all the points} that are not covered in above sections.
-\end{itemize}
-\vfill\null
+% \vfill\null
+% \cvsection{EXTRACURRICULAR}
+% \vspace{-0.3cm}
+% \begin{itemize}
+%   \item Put all the points that are not covered in \textbf{above sections}.
+%   \item Put all the points that are \textbf{not covered} in above sections.
+%   \item Put all the \textbf{points} that are not covered in above sections.
+%   \item \textbf{Put all the points} that are not covered in above sections.
+% \end{itemize}
+% \vfill\null
 
+%---------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+\newpage
+\vfill\null
+\cvsection{@lblReferences@}
+
+%{references}%
 
 % hotfixes to create fake-space to ensure the whole height is used
-\vfill
-\vfill
-\vfill
+\vspace*{\vfill}
+
 \end{rightcolumn}
 \end{paracol}
 \end{document}
