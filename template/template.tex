@@ -104,7 +104,7 @@
 
 % icon with email link
 \newcommand{\iconemail}[5]{ 						
-    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{\parbox{0.7\mpwidth}{#3}}}
 }
 
 %----------------------------------------------------------------------------------------
@@ -196,7 +196,7 @@
 
 \definecolor{primary_color}{HTML}{1f6feb}
 \definecolor{secondary_color}{HTML}{72A0C1}
-
+\definecolor{header_title_color}{RGB}{0, 0, 0}
 % colors end
 
 % remove all possible margins
@@ -335,9 +335,9 @@
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.65\mpwidth}  r}
 			\hspace{3pt}
-	 		\textcolor{text_color}{\textbf{#2}} & \colorbox{primary_color}{\makebox[0.28\mpwidth]{\textcolor{text_color}{#1}}} \\
+	 		\textcolor{text_color}{\textbf{#2}} & \colorbox{primary_color}{\makebox[0.28\mpwidth]{\textcolor{secondary_color}{#1}}} \\
 			 \hspace{3pt}
-			\textcolor{secondary_color}{\textbf{#3}} & \\
+			\textcolor{primary_color}{\textbf{#3}} & \\
 			\vspace{6pt}	
 			\ifthenelse{\isempty{#4}}{}{
 				\hspace{3pt}
@@ -376,18 +376,18 @@
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
 			\hspace{3pt}
-	 		\textcolor{secondary_color}{\parbox{\mpwidth}{\textbf{\textit{#2}}}} & \colorbox{primary_color}{\makebox[0.25\mpwidth]{\textcolor{text_color}{#1}}} \\
-			\vspace{1pt}
+	 		\textcolor{primary_color}{\parbox{\mpwidth}{\textbf{\textit{#2}}}} & \colorbox{primary_color}{\makebox[0.25\mpwidth]{\textcolor{secondary_color}{#1}}} \\
+				
 			\hspace{3pt}
 			\parbox{\mpwidth}{\textcolor{text_color}{\textbf{#5} #3}} & \\
-			\vspace{2pt}
+			
 			\ifthenelse{\isempty{#4}}{}{
 			\hspace{3pt}
 			\parbox{\mpwidth}{\textcolor{text_color}{\textbf{#6}#4}}\\
 			}
 		\end{tabular*}
 	}
-	\vspace{4pt}
+	\vspace{7pt}
 }
 
 
@@ -490,7 +490,7 @@
 %---------------------------------------------------------------------------------------
 %	META IMAGE
 %----------------------------------------------------------------------------------------
-\includegraphics[width=\linewidth]{./assets/perfil.png}	%trimming relative to image size
+%\includegraphics[width=\linewidth]{./assets/perfil.png}	%trimming relative to image size
 
 \cvsection{@lblContact@}
 
@@ -556,9 +556,9 @@
 %----------------------------------------------------------------------------------------
 \fcolorbox{headercol}{headercol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ @name@ } } } } \\[-24pt]
-		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} { @rol@ } }
+		\HUGE{ \textbf{ \textcolor{header_title_color}{ \uppercase{ @name@ } } } } \\[-24pt]
+		\textcolor{header_title_color}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
+		\large{ \textcolor{header_title_color} { @rol@ } }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
